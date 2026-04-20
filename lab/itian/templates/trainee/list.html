@@ -1,0 +1,32 @@
+{% extends 'parent.html' %}
+
+{% block content %}
+
+<h2>All Trainees</h2>
+
+<a href="/trainee/add">Add Trainee</a>
+
+<ul>
+
+{% for t in trainees %}
+
+<li>
+
+{{ t.name }}
+
+<a href="/trainee/{{ t.id }}">
+View
+
+<a href="/trainee/update/{{ t.id }}">
+Update
+
+<a href="/trainee/delete/{{ t.id }}">
+Delete
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}
