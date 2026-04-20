@@ -5,7 +5,8 @@ urlpatterns = [
 
     path(
         'list',
-        views.list_trainee
+        views.list_trainee,
+        name='trainee_list'
     ),
 
     path(
@@ -15,17 +16,20 @@ urlpatterns = [
 
     path(
         'add',
-        views.add
+        views.TraineeCreate.as_view(),
+        name='trainee_add'
     ),
 
     path(
-        'update/<int:id>',
-        views.update
+        'update/<int:pk>',
+        views.TraineeUpdate.as_view(),
+        name='trainee_update'
     ),
 
     path(
         'delete/<int:id>',
-        views.delete
+        views.delete,
+        name='trainee_delete'
     ),
 
 ]

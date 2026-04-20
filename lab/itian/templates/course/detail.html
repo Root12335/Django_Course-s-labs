@@ -1,0 +1,4 @@
+<h1>{{ course.name }}</h1>
+<a href="{% url 'course_update' pk=course.id %}">Update</a>
+<form action="{% url 'course_delete' id=course.id %}" method="post">{% csrf_token %}<button>Delete</button></form>
+<a href="{% url 'course_list' %}">Back</a>
