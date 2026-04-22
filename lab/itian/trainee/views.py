@@ -55,9 +55,12 @@ def delete(request, id):
 
         trainee.delete()
 
-        return redirect("/trainee")
+        return redirect("trainee_list")
 
     return render(
         request,
-        'trainee/delete.html'
+        'trainee/delete.html',
+        {
+            'trainee': trainee
+        }
     )

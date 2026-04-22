@@ -28,4 +28,4 @@ def delete(request, id):
     if request.method == "POST":
         course.delete()
         return redirect('course_list')
-    return render(request, 'course/delete.html')
+    return render(request, 'course/delete.html', {'course': course})

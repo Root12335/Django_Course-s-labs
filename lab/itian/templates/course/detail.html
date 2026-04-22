@@ -1,4 +1,7 @@
-<h1>{{ course.name }}</h1>
-<a href="{% url 'course_update' pk=course.id %}">Update</a>
-<form action="{% url 'course_delete' id=course.id %}" method="post">{% csrf_token %}<button>Delete</button></form>
+{% extends 'parent.html' %}
+{% block content %}
+<h2>Course Details</h2>
+{{ course.name }}
+<br><br>
 <a href="{% url 'course_list' %}">Back</a>
+{% endblock %}

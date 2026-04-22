@@ -1,11 +1,10 @@
-{% extends 'parent.html' %} {% block content %}
-
+{% extends 'parent.html' %}
+{% block content %}
 <h2>Delete Trainee</h2>
-
+<p>Are you sure you want to delete '{{ trainee.name }}'?</p>
 <form method="post">
-  {% csrf_token %}
-
-  <button type="submit">Confirm Delete</button>
+{% csrf_token %}
+<button type="submit" style="color: red;">Confirm Delete</button>
+<a href="{% url 'trainee_list' %}">Cancel</a>
 </form>
-
 {% endblock %}
