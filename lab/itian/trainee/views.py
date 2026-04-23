@@ -31,43 +31,20 @@ def detail(request, id):
     )
 
 
-def add(request):
+from django.views.generic.edit import CreateView, UpdateView
+from django.urls import reverse_lazy
 
-    if request.method == "POST":
+class TraineeCreate(CreateView):
+    model = Trainee
+    fields = ['name', 'course']
+    template_name = 'trainee/add.html'
+    success_url = reverse_lazy('trainee_list')
 
-        name = request.POST.get("name")
-
-        Trainee.objects.create(
-            name=name
-        )
-
-        return redirect("/trainee")
-
-    return render(
-        request,
-        'trainee/add.html'
-    )
-
-
-def update(request, id):
-
-    trainee = Trainee.objects.get(id=id)
-
-    if request.method == "POST":
-
-        trainee.name = request.POST.get("name")
-
-        trainee.save()
-
-        return redirect("/trainee")
-
-    return render(
-        request,
-        'trainee/update.html',
-        {
-            'trainee': trainee
-        }
-    )
+class TraineeUpdate(UpdateView):
+    model = Trainee
+    fields = ['name', 'course']
+    template_name = 'trainee/update.html'
+    success_url = reverse_lazy('trainee_list')
 
 
 def delete(request, id):
@@ -78,9 +55,12 @@ def delete(request, id):
 
         trainee.delete()
 
-        return redirect("/trainee")
+        return redirect("trainee_list")
 
     return render(
         request,
-        'trainee/delete.html'
+        'trainee/delete.html',
+        {
+            'trainee': trainee
+        }
     )

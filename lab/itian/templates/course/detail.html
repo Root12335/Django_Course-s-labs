@@ -1,0 +1,7 @@
+{% extends 'parent.html' %}
+{% block content %}
+<h2>Course Details</h2>
+{{ course.name }}
+<br><br>
+<a href="{% url 'course_list' %}">Back</a>
+{% endblock %}

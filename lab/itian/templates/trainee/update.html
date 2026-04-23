@@ -1,13 +1,10 @@
-{% extends 'parent.html' %} {% block content %}
-
+{% extends 'parent.html' %}
+{% block content %}
 <h2>Update Trainee</h2>
-
 <form method="post">
-  {% csrf_token %}
-
-  <input type="text" name="name" value="{{ trainee.name }}" />
-
-  <button type="submit">Update</button>
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">Save</button>
 </form>
-
+<a href="{% url 'trainee_list' %}">Back</a>
 {% endblock %}
